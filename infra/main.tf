@@ -5,13 +5,19 @@ terraform {
       version = "~> 3.0"
     }
   }
+  cloud {
+    organization = "konfortes"
 
-  backend "local" {
-    path = "terraform.tfstate"
+    workspaces {
+      name = "mynance"
+    }
   }
+
+  # backend "local" {
+  #   path = "terraform.tfstate"
+  # }
 }
 
-# Configure the AWS Provider
 provider "aws" {
   region = "us-east-1"
 }
