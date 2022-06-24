@@ -1,4 +1,10 @@
+.vscode
+
 .ipynb_checkpoints/
 .python-version
+
+**/.terraform/providers/
+
+.env
 
 masleka/data
