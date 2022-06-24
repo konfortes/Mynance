@@ -1,0 +1,48 @@
+name: Terraform Plan
+
+# Deactivated since Terraform Cloud is used
+# on:
+#   pull_request:
+#     branches:
+#       - main
+#     paths:
+#       - "infra/*"
+
+jobs:
+  terraform:
+    name: "Terraform Plan"
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+      AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.2.3
+      - name: Terraform Init
+        id: init
+        run: terraform -chdir=infra init
+      - name: Terraform Format
+        run: terraform fmt -recursive -check
+      - name: Terraform Validate
+        run: terraform -chdir=infra validate
+      - name: Terraform Plan
+        id: plan
+        run: terraform -chdir=infra plan -no-color
+
+      - name: Add Comment
+        uses: actions/github-script@v6.1.0
+        env:
+          STDOUT: "```${{ steps.plan.outputs.stdout }}```"
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: process.env.STDOUT
+            })
