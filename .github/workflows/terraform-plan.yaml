@@ -1,11 +1,13 @@
 name: Terraform Plan
 
-on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - "infra/*"
+# Deactivated since Terraform Cloud is used
+# on:
+#   pull_request:
+#     branches:
+#       - main
+#     paths:
+#       - "infra/*"
+
 jobs:
   terraform:
     name: "Terraform Plan"

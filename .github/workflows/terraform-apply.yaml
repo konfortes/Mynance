@@ -1,9 +1,11 @@
 name: Terraform Apply
 
-on:
-  push:
-    branches:
-      - main
+# Deactivated since Terraform Cloud is used
+# on:
+#   push:
+#     branches:
+#       - main
+
 jobs:
   terraform:
     name: "Terraform Apply"
