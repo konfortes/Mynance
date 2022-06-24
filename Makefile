@@ -8,18 +8,23 @@ init:
 	@echo "Running terraform init"
 	terraform -chdir=infra init
 
-lint:
-	@echo "Running terraform fmt and validate"
-	cd infra && fmt -recursive -write=true && terraform validate
+fmt:
+	@echo "Running terraform fmt"
+	terraform fmt -recursive -write=true
+validate:
+	@echo "Running terraform validate"
+	terraform -chdir=infra validate
 
-plan:
+lint: fmt validate
+
+plan: init
 	@echo "Running terraform plan"
-	cd infra && terraform init && terraform plan
+	terraform -chdir=infra plan
 
-apply:
+apply: init
 	@echo "Running terraform apply"
-	cd infra && terraform init && terraform apply
+	terraform -chdir=infra apply
 
-destroy:
+destroy: init
 	@echo "Running terraform destroy"
-	cd infra && terraform init && terraform destroy
+	terraform -chdir=infra destroy
