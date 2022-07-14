@@ -30,7 +30,7 @@ resource "aws_dynamodb_table" "test" {
   write_capacity = 1
 
   attribute {
-    name = "TestTableHashKey"
+    name = "Transactions"
     type = "S"
   }
 }

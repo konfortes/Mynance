@@ -10,3 +10,5 @@
 masleka/data
 
 node_modules/
+
+dist/
