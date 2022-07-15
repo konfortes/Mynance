@@ -22,7 +22,7 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_dynamodb_table" "test" {
+resource "aws_dynamodb_table" "Transactions" {
   name           = "test"
   hash_key       = "TestTableHashKey"
   billing_mode   = "PROVISIONED"
@@ -30,7 +30,7 @@ resource "aws_dynamodb_table" "test" {
   write_capacity = 1
 
   attribute {
-    name = "TestTableHashKey"
+    name = "Transactions"
     type = "S"
   }
 }
