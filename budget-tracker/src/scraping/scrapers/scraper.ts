@@ -38,13 +38,15 @@ export abstract class TransactionsScraper {
 
         console.log(`Scraper ${this.scraperType} - start scraping`)
         // TODO: make it nicer with map
-        const result: any[] = []
+        let result: any[] = []
         const response = await this.scraper.scrape(this.credentials as any)
 
-        console.log(`Scraper ${this.scraperType} got result: ${JSON.stringify(response, null, 4)}`)
+        console.log(`Scraper ${this.scraperType} ${response.success ? 'Succeeded' : 'Failed'}`)
         for (const a of response.accounts || []) {
-            result.concat(a.txns)
+            result = result.concat(a.txns)
         }
+
+        console.log(`Scraper ${this.scraperType} - got ${result.length} transactions`)
         return result
     }
 }
