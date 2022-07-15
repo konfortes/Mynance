@@ -9,6 +9,9 @@
 
 masleka/data
 
-node_modules/
 
+node_modules/
 dist/
+budget-tracker/dev/dags
+budget-tracker/dev/logs
+budget-tracker/dev/plugins
