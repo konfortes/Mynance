@@ -1,7 +1,5 @@
-import * as dotenv from 'dotenv'
 import { BeinleumiScraper } from './scrapers/beinleumi'
 import { MaxScraper } from './scrapers/max'
-dotenv.config()
 import { TransactionsScraper } from './scrapers/scraper'
 
 export async function importTransactions(startDate: Date | string) {

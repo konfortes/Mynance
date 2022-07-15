@@ -12,8 +12,9 @@ Set this pre-commit hook to strip Jupyter notebooks output (edit `.git/hooks/pre
 #!/bin/sh
 
 jupyter nbconvert --clear-output --inplace **/*.ipynb
-make lint
-git add .
+make infra-lint
+git add infra
+git add *.ipynb
 ```
 
 ## infra
