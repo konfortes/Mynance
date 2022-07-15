@@ -1,3 +1,4 @@
+// TODO: Fix Types!
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createScraper, ScraperOptions } from 'israeli-bank-scrapers'
 // import { CompanyTypes, createScraper, ScraperOptions } from 'israeli-bank-scrapers'
@@ -34,19 +35,23 @@ export abstract class TransactionsScraper {
     // TODO: Yuck. FIX
     async scrape(): Promise<any[]> {
         // TODO: handle success/error
-        // TODO: yuck. FIX
 
         console.log(`Scraper ${this.scraperType} - start scraping`)
-        // TODO: make it nicer with map
-        let result: any[] = []
-        const response = await this.scraper.scrape(this.credentials as any)
+        const response = (await this.scraper.scrape(this.credentials as any)) as any
 
         console.log(`Scraper ${this.scraperType} ${response.success ? 'Succeeded' : 'Failed'}`)
-        for (const a of response.accounts || []) {
-            result = result.concat(a.txns)
+
+        const result = []
+
+        for (const account of response.accounts || []) {
+            for (const txn of account.txns || []) {
+                txn.accountNumber = account.accountNumber
+                result.push(txn)
+            }
         }
 
-        console.log(`Scraper ${this.scraperType} - got ${result.length} transactions`)
+        console.log(`${this.scraperType} scraper - got ${result.length} transactions`)
+
         return result
     }
 }
