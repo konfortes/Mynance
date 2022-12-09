@@ -25,4 +25,4 @@ In order to interact with aws, create a `.env` file next to `Makefile`. It shoul
 
 ## masleka
 
-## budget-tracker
+## transactions-fetcher

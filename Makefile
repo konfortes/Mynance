@@ -31,12 +31,9 @@ infra-destroy: infra-init
 
 airflow-start:
 	@echo "Running airflow"
-	docker-compose -f budget-tracker/dev/docker-compose.yaml up -d
+	docker-compose -f transactions-fetcher/airflow/docker-compose.yaml up -d
 airflow-stop:
 	@echo "Stopping airflow"
-	docker-compose -f budget-tracker/dev/docker-compose.yaml down
+	docker-compose -f transactions-fetcher/airflow/docker-compose.yaml down
 airflow-status:
-	docker-compose -f budget-tracker/dev/docker-compose.yaml ps
-airflow-shell:
-	@ echo "A workaround for non-working docker-compose exec"
-	docker exec -it dev_airflow-webserver_1 bash
+	docker-compose -f transactions-fetcher/airflow/docker-compose.yaml ps

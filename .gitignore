@@ -12,7 +12,7 @@ masleka/data
 
 node_modules/
 dist/
-budget-tracker/dev/dags
-budget-tracker/dev/logs
-budget-tracker/dev/plugins
+transactions-fetcher/dev/dags
+transactions-fetcher/dev/logs
+transactions-fetcher/dev/plugins
 transactions_*
