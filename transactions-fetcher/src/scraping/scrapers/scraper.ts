@@ -39,7 +39,11 @@ export abstract class TransactionsScraper {
         console.log(`Scraper ${this.scraperType} - start scraping`)
         const response = (await this.scraper.scrape(this.credentials as any)) as any
 
-        console.log(`Scraper ${this.scraperType} ${response.success ? 'Succeeded' : 'Failed'}`)
+        if (!response.success) {
+            const msg = `Request for ${this.scraperType} failed. Response: ${JSON.stringify(response, null, 4)}`
+            console.log(msg)
+            return Promise.reject(new Error(msg))
+        }
 
         const result = []
 

@@ -4,7 +4,7 @@ import { TransactionsScraper } from './scrapers/scraper'
 
 export function getScrapers(startDate: Date): TransactionsScraper[] {
     const commonScraperOptions = {
-        startDate: new Date(startDate),
+        startDate: startDate,
         combineInstallments: false,
         showBrowser: false,
         verbose: false,
