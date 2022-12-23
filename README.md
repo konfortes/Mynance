@@ -26,3 +26,14 @@ In order to interact with aws, create a `.env` file next to `Makefile`. It shoul
 ## masleka
 
 ## transactions-fetcher
+
+transactions-fetcher is a cli tool to fetch transactions from Fibi(Beinleumi) and Max. It receive a string argument of --startdate (defaults to 1hr ago) and saves it to ./transactions_<startdate>
+
+### Env Vars
+
+Some env vars must be set for the fetch to be able to connect:
+
+- BANK_USERNAME
+- BANK_PASSWORD
+- MAX_USERNAME
+- MAX_PASSWORD

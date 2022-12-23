@@ -26,7 +26,7 @@ const DATE_FORMAT = 'DD/MM/YYYY'
     if (options.startdate) {
         startDate = moment(options.startdate, DATE_FORMAT)
     } else {
-        startDate = moment().subtract(30, 'minutes')
+        startDate = moment().subtract(1, 'hour')
     }
 
     startDate = startDate.toDate()
