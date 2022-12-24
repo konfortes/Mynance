@@ -26,7 +26,7 @@ const DATE_FORMAT = 'DD/MM/YYYY'
     if (options.startdate) {
         startDate = moment(options.startdate, DATE_FORMAT)
     } else {
-        startDate = moment().subtract(1, 'hour')
+        startDate = moment().subtract(3, 'years')
     }
 
     startDate = startDate.toDate()
@@ -38,9 +38,13 @@ const DATE_FORMAT = 'DD/MM/YYYY'
 })()
 
 export async function importTransactions(startDate: Date) {
-    const [beinleumiScraper, maxScraper] = getScrapers(startDate)
+    const [beinleumiScraper, maxScraper, calScraper] = getScrapers(startDate)
 
-    const [beinleumiTransactions, maxTransactions] = await Promise.all([beinleumiScraper.scrape(), maxScraper.scrape()])
+    const [beinleumiTransactions, maxTransactions, calTransactions] = await Promise.all([
+        beinleumiScraper.scrape(),
+        maxScraper.scrape(),
+        calScraper.scrape(),
+    ])
 
-    return beinleumiTransactions.concat(maxTransactions)
+    return beinleumiTransactions.concat(maxTransactions).concat(calTransactions)
 }

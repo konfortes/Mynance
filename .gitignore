@@ -15,4 +15,5 @@ dist/
 transactions-fetcher/dev/dags
 transactions-fetcher/dev/logs
 transactions-fetcher/dev/plugins
-transactions_*
+
+*.csv

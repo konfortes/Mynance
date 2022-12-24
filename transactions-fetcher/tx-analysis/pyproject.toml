@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "tx-analysis"
+version = "0.1.0"
+description = ""
+authors = ["konfortes <konfortes@gmail.com>"]
+readme = "README.md"
+packages = [{include = "tx_analysis"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+boto3 = "^1.26.37"
+jupyter = "^1.0.0"
+pandas = "^1.5.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

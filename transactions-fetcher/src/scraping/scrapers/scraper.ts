@@ -6,6 +6,7 @@ import { createScraper, ScraperOptions } from 'israeli-bank-scrapers'
 export enum ScraperType {
     Beinleumi = 'beinleumi',
     Max = 'max',
+    Cal = 'visaCal',
 }
 
 export interface Credentials {
